@@ -7,7 +7,7 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-from build123d import export_step, export_stl
+from build123d import Mesher, Pos, export_step, export_stl
 
 from kiku_cad.probes import insert_probe, pi4_probe, servo_probe
 
@@ -19,6 +19,28 @@ PARTS = {
     "probe_pi4": pi4_probe.build,
     "probe_servo_sts3215": servo_probe.build,
 }
+
+
+# Стол пробников: (имя, X, Y) центра детали на столе A1 mini, 0..180
+PROBE_PLATE = (
+    ("probe_pi4", 90, 135),
+    ("probe_servo_sts3215", 135, 55),
+    ("probe_insert_m3", 55, 40),
+)
+
+
+def plate_probes() -> Path:
+    """Все пробники на одном столе — один 3MF для Bambu Studio."""
+    mesher = Mesher()
+    for name, x, y in PROBE_PLATE:
+        part = PARTS[name]()
+        c = part.bounding_box().center()
+        part = Pos(x - c.X, y - c.Y, -part.bounding_box().min.Z) * part
+        part.label = name
+        mesher.add_shape(part, part_number=name)
+    path = OUT / "plate_probes.3mf"
+    mesher.write(str(path))
+    return path
 
 
 def main(names: list[str]) -> int:
@@ -41,6 +63,8 @@ def main(names: list[str]) -> int:
               f"объём {part.volume / 1000:5.1f} см³"
               + ("" if ok_bed else "  > стол 180")
               + ("" if ok_solid else f"  тел: {len(part.solids())}, valid={part.is_valid}"))
+    if not names or "plate_probes" in names:
+        print("ok      plate_probes ->", plate_probes().name)
     return 1 if failed else 0
 
 
