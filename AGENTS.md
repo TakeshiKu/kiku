@@ -1,8 +1,8 @@
 ## Проектный контекст и жизненный цикл
 
-Связанный корень project-memory: `/Users/takeshi_k/PROJECTS/memory/project-memory/personal/diy/kiku`. Канон жизненного цикла: `/Users/takeshi_k/PROJECTS/kb/knowledge-rules/project-work/standard.md`.
+Связанный корень project-memory: `/Users/takeshi_k/PROJECTS/memory/project-memory/personal/mind-mesh` (проект Mind & Mesh). Кику в нём — тема: `kiku/README.md` (правила изделия), `kiku/status.md` (состояние), `kiku/planning/` (концепция, покупки). Отдельного проекта памяти Кику больше нет (с 10.11, ADR-0028 Mind & Mesh). Канон жизненного цикла: `/Users/takeshi_k/PROJECTS/kb/knowledge-rules/project-work/standard.md`.
 
-На первом ходе нового чата до работы с кодом прочитай в связанном корне ровно `project.yaml` → `index.md` → `state.md` → `instructions.md`. Не открывай entrypoint, стандарт, реестр и не запускай поиск до этой четвёрки; наличие конкретной задачи правила не меняет. В уже начатом чате проход не повторяется.
+На первом ходе нового чата до работы с кодом прочитай в связанном корне ровно `project.yaml` → `index.md` → `state.md` → `instructions.md`; затем, для работы с изделием, `kiku/README.md` и `kiku/status.md`. Не открывай entrypoint, стандарт, реестр и не запускай поиск до этой четвёрки; наличие конкретной задачи правила не меняет. В уже начатом чате проход не повторяется.
 
 Перед сохранением или закрытием следуй разделу «Закрытие сессии» канона; ничего не записывай автоматически. Здесь хранятся только технические правила репозитория, не проектная память.
 
