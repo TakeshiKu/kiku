@@ -9,6 +9,7 @@ from pathlib import Path
 
 from build123d import Mesher, Pos, export_step, export_stl
 
+from kiku_cad import display_frame
 from kiku_cad.probes import insert_probe, pi4_probe, servo_probe
 
 BED = 180.0  # A1 mini: 180×180×180 мм
@@ -18,6 +19,7 @@ PARTS = {
     "probe_insert_m3": insert_probe.build,
     "probe_pi4": pi4_probe.build,
     "probe_servo_sts3215": servo_probe.build,
+    "display_frame_tft28": display_frame.build,
 }
 
 
